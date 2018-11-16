@@ -1,6 +1,7 @@
-package oopgame;
+package CS3650_Project;
 
-public class monster {
+public class Monster {
+
     private String name;
     private int ID;
     private int level;
@@ -8,8 +9,8 @@ public class monster {
     private int healthPoints;
     private int attackDamage;
     private int defense;
-    
-    public monster() {
+
+    public Monster() {
         name = "Monster";
         ID = 001;
         level = 1;
