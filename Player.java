@@ -16,7 +16,6 @@ public class Player extends GameObject {
     }
 
     public void levelUp() {
-        this.setLevel(5000);
     }
 
 }

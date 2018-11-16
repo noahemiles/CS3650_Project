@@ -4,7 +4,7 @@ package CS3650_Project;
  *
  * @author Noah
  */
-//Every object in the game
+//Every object in the games
 public abstract class GameObject {
 
     private String name;
@@ -82,6 +82,4 @@ public abstract class GameObject {
         this.id = id;
     }
 
-    
-    
 }
