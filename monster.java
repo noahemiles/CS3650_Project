@@ -1,6 +1,6 @@
 package CS3650_Project;
 
-public class Monster {
+public class monster {
 
     private String name;
     private int ID;
@@ -10,7 +10,7 @@ public class Monster {
     private int attackDamage;
     private int defense;
 
-    public Monster() {
+    public monster() {
         name = "Monster";
         ID = 001;
         level = 1;

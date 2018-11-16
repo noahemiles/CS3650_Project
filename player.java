@@ -1,6 +1,6 @@
 package CS3650_Project;
 
-public class Player {
+public class player {
 
     private String name;
     private int ID;
@@ -12,7 +12,7 @@ public class Player {
     private int defense;
     private int stamina;
 
-    public Player() {
+    public player() {
         name = "Player 1";
         ID = 000;
         level = 1;
