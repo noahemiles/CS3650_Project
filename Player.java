@@ -12,6 +12,11 @@ public class Player extends GameObject {
     }
 
     public void levelUp() {
+
+    }
+
+    public void staminaUp() {
+
     }
 
 }
