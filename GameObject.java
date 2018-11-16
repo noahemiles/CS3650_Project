@@ -1,9 +1,5 @@
 package CS3650_Project;
 
-/**
- *
- * @author Noah
- */
 //Every object in the games
 public abstract class GameObject {
 

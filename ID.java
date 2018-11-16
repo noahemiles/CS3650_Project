@@ -1,10 +1,6 @@
 package CS3650_Project;
 
-/**
- *
- * @author Noah
- */
-//Can add different types of IDs here
+//Can add different types of Objects here
 public enum ID {
     PLAYER,
     MONSTER;

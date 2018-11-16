@@ -1,9 +1,5 @@
 package CS3650_Project;
 
-/**
- *
- * @author Noah
- */
 public class Player extends GameObject {
 
     private int currentEXP;

@@ -1,9 +1,5 @@
 package CS3650_Project;
 
-/**
- *
- * @author Noah
- */
 public class Monster extends GameObject {
 
     protected Type type; //monster typing (weakness & strengths)
