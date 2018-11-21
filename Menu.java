@@ -10,7 +10,7 @@ public class Menu {
         System.out.println(new String(new char[100]).replace("\0", "\r\n"));
     }
     
-    public static void main(String[] args) {
+    public void startMenu() {
         int choice;
         String name;
         Scanner kb = new Scanner(System.in);
