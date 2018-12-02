@@ -94,5 +94,14 @@ public abstract class GameObject {
     public void setIdMonster() {
         this.id = ID.MONSTER;
     }
+    
+    public static void displayInfo(GameObject obj){
+        System.out.println(obj.getName());
+        System.out.println("Level: " + obj.getLevel());
+        System.out.println("Health: " + obj.getCurrentHealthPoints() + "/" + obj.getMaxHealthPoints());
+        System.out.println("Attack: " + obj.getAttackDamageStat());
+        System.out.println("Defense: " + obj.getDefenseStat());
+    }
+
 
 }

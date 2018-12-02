@@ -4,12 +4,13 @@ public class Player extends GameObject {
 
     private int currentEXP;
     private int stamina;
-
+    private int toLevelUp;
     //This constructor is called when using only a name to crate a Player
     public Player(String name){
         super(name);
         this.currentEXP = 0;
         this.stamina = 100;
+        toLevelUp = 10;
         setIdPlayer();
     }
     
@@ -19,18 +20,50 @@ public class Player extends GameObject {
         this.stamina = stamina;
     }
 
-    public static void displayInfo(Player obj){
-        System.out.println(obj.getName());
-        System.out.println("Level: " + obj.getLevel());
-        System.out.println("Health: " + obj.getCurrentHealthPoints() + "/" + obj.getMaxHealthPoints());
-        System.out.println("Attack: " + obj.getAttackDamageStat());
-        System.out.println("Defense: " + obj.getDefenseStat());
+
+    public void levelUp() 
+    {
+    	//update the amount needed to level up next
+    	toLevelUp = getLevel()*10;
+    	int currLevel = getLevel();
+    	//move onto next level
+    	this.setLevel(++currLevel);
+    	
+    	//increase player's stats for leveling up
+    	//+5 for HP
+    	setCurrentHealthPoints(getCurrentHealthPoints() + 5);
+    	setMaxHealthPoints(getCurrentHealthPoints() +5);
+    	
+    	//+2 for Attack
+    	setAttackDamageStat(getAttackDamageStat() + 2);
+    	
+    	//+1 for Defense
+    	setDefenseStat(getDefenseStat() + 1);
+    	
+    	System.out.println("Congratualtions " + this.getName() + ", You just leveled up to " + this.getLevel() + "!!");
     }
+
+    public void gainxp(int monsterLevel, int damageDealt) {
+    	int tempEXP = currentEXP;
+    	int gainedEXP = monsterLevel * damageDealt;
+    	currentEXP += gainedEXP;
+    	System.out.println("Gained " + gainedEXP + " EXP ");
+    	System.out.println("Total EXP Now " + currentEXP + " EXP ");
+
+    	//Keep looping through progressive level as long as have enough exp
+    	while(gainedEXP >= toLevelUp)
+    	{
+    		gainedEXP -= toLevelUp;
+    		levelUp();
+    	}
+    	
+    	//Leftover exp counts towards next level
+    	toLevelUp -= gainedEXP;
+    	
+    }
+
     
-    public void levelUp() {
-
-    }
-
+    
     public void staminaUp() {
 
     }

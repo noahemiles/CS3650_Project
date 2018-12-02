@@ -38,16 +38,18 @@ public class Menu {
                     System.out.println("(1) Angry Pigeon");
                     System.out.println("(2) Ravaging Ghoul");
                     System.out.println("(3) Unkillable Behemoth");
-                    System.out.println("Enter an option (1-3): ");
+                    System.out.println("(4) Create Your Own Monster");
+                    System.out.println("Enter an option (1-4): ");
                     choice = kb.nextInt();
-                    while (choice < 1 || choice > 3){
+                    while (choice < 1 || choice > 4){
                         clearScreen();
                         System.out.println("Invalid choice.");
                         System.out.println("Choose a default Monster");
                         System.out.println("(1) Angry Pigeon");
                         System.out.println("(2) Ravaging Ghoul");
                         System.out.println("(3) Unkillable Behemoth");
-                        System.out.println("Enter an option (1-3): ");
+                        System.out.println("(4) Create Your Own Monster");
+                        System.out.println("Enter an option (1-4): ");
                         choice = kb.nextInt();
                     }
                     switch(choice){
@@ -63,6 +65,36 @@ public class Menu {
                             Monster UnkillableBehemoth = new Monster(Type.FIRE, "Unkillable Behemoth", 99, 999, 999, 100, 100, ID.MONSTER);
                             Monster.displayInfo(UnkillableBehemoth);
                             break;
+                        case 4:
+                           System.out.println("Enter Name for Monster: "); 
+                           String tempName = kb.next();
+                           
+                           System.out.println("Enter Level for Monster: " );
+                           int templvl = kb.nextInt();
+                           
+                           System.out.println("Enter Max HP for Monster: " );
+                           int temphp = kb.nextInt();
+                           
+                           System.out.println("Enter Current HP for Monster: " );
+                           int currhp = kb.nextInt();
+                           
+                           System.out.println("Enter Attack Damage for Monster: " );
+                           int tempAD = kb.nextInt();
+                           
+                           System.out.println("Enter Defensive Stats for Monster: " );
+                           int tempD = kb.nextInt();
+                           
+                           Monster customMonster = new Monster(Type.FIRE, tempName, templvl, temphp, currhp, tempAD, tempD, ID.MONSTER);
+                           Monster.displayInfo(customMonster);
+                           //implement type if want
+                           /*NEUTRAL,
+                            UNDEAD,
+                            FIRE,
+                            WATER,
+                            ICE,
+                            EARTH;
+                            */ 
+                        	break;                        	
                         default:
                             break;
                     }

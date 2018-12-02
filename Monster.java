@@ -14,12 +14,5 @@ public class Monster extends GameObject {
         this.type = type;
     }
     
-    public static void displayInfo(Monster obj){
-        System.out.println(obj.getName());
-        System.out.println("Level: " + obj.getLevel());
-        System.out.println("Health: " + obj.getCurrentHealthPoints() + "/" + obj.getMaxHealthPoints());
-        System.out.println("Attack: " + obj.getAttackDamageStat());
-        System.out.println("Defense: " + obj.getDefenseStat());
-    }
 
 }
