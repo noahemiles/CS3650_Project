@@ -6,20 +6,24 @@ public class Player extends GameObject {
     private int stamina;
     private int toLevelUp;
     //This constructor is called when using only a name to crate a Player
-    public Player(String name){
+    public Player(String name) {
         super(name);
         this.currentEXP = 0;
         this.stamina = 100;
+<<<<<<< HEAD
         toLevelUp = 10;
         setIdPlayer();
+=======
+>>>>>>> 760bd672cf1184c3b0ffa72abe025a2dffa2f82c
     }
-    
+
     public Player(int exp, int stamina, String name, int level, int maxHealthPoints, int currentHealthPoints, int attackDamageStat, int defenseStat, ID id) {
         super(name, level, maxHealthPoints, currentHealthPoints, attackDamageStat, defenseStat, id);
         this.currentEXP = exp;
         this.stamina = stamina;
     }
 
+<<<<<<< HEAD
 
     public void levelUp() 
     {
@@ -42,6 +46,9 @@ public class Player extends GameObject {
     	
     	System.out.println("Congratualtions " + this.getName() + ", You just leveled up to " + this.getLevel() + "!!");
     }
+=======
+    public void levelUp() {
+>>>>>>> 760bd672cf1184c3b0ffa72abe025a2dffa2f82c
 
     public void gainxp(int monsterLevel, int damageDealt) {
     	int tempEXP = currentEXP;
