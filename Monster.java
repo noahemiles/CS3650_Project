@@ -6,7 +6,6 @@ public class Monster extends GameObject {
 
     public Monster(String name) {
         super(name);
-        setIdMonster();
     }
 
     public Monster(Type type, String name, int level, int maxHealthPoints, int currentHealthPoints, int attackDamageStat, int defenseStat, ID id) {
