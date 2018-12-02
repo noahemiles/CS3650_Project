@@ -31,12 +31,12 @@ public abstract class GameObject {
         this.id = id;
     }
 
-    public static void displayInfo(GameObject obj) {
-        System.out.println(obj.getName());
-        System.out.println("Level: " + obj.getLevel());
-        System.out.println("Health: " + obj.getCurrentHealthPoints() + "/" + obj.getMaxHealthPoints());
-        System.out.println("Attack: " + obj.getAttackDamageStat());
-        System.out.println("Defense: " + obj.getDefenseStat());
+    public void displayInfo() {
+        System.out.println(this.getName());
+        System.out.println("Level: " + this.getLevel());
+        System.out.println("Health: " + this.getCurrentHealthPoints() + "/" + this.getMaxHealthPoints());
+        System.out.println("Attack: " + this.getAttackDamageStat());
+        System.out.println("Defense: " + this.getDefenseStat());
         System.out.println();
     }
 
@@ -107,13 +107,4 @@ public abstract class GameObject {
     public void setId(ID id) {
         this.id = id;
     }
-
-    public void setIdPlayer() {
-        this.id = ID.PLAYER;
-    }
-
-    public void setIdMonster() {
-        this.id = ID.MONSTER;
-    }
-
 }

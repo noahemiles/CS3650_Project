@@ -12,7 +12,6 @@ public class Player extends GameObject {
         this.currentEXP = 0;
         this.stamina = 100;
         toLevelUp = 10;
-        setIdPlayer();
     }
 
     public Player(int exp, int stamina, String name, int level, int maxHealthPoints, int currentHealthPoints, int attackDamageStat, int defenseStat, ID id) {

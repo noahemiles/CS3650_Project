@@ -1,8 +1,6 @@
 package CS3650_Project;
 
 import java.util.Scanner;
-import java.util.*;
-import java.lang.*;
 
 public class Menu {
 
@@ -31,7 +29,7 @@ public class Menu {
                     System.out.print("Please enter a name: ");
                     name = kb.next();
                     player = new Player(name);
-                    Player.displayInfo(player);
+                    player.displayInfo();
                     System.out.println("\n");
                     break;
                 case 2:
@@ -57,15 +55,15 @@ public class Menu {
                     switch (choice) {
                         case 1:
                             monster = new Monster(Type.NEUTRAL, "Angry Pigeon", 1, 10, 10, 1, 0, ID.MONSTER);
-                            Monster.displayInfo(monster);
+                            monster.displayInfo();
                             break;
                         case 2:
                             monster = new Monster(Type.UNDEAD, "Ravaging Ghoul", 2, 10, 10, 1, 0, ID.MONSTER);
-                            Monster.displayInfo(monster);
+                            monster.displayInfo();
                             break;
                         case 3:
                             monster = new Monster(Type.FIRE, "Unkillable Behemoth", 99, 999, 999, 100, 100, ID.MONSTER);
-                            Monster.displayInfo(monster);
+                            monster.displayInfo();
                             break;
                         case 4:
                             System.out.println("Enter Name for Monster: ");
@@ -86,7 +84,7 @@ public class Menu {
                             int tempD = kb.nextInt();
 
                             monster = new Monster(Type.FIRE, tempName, templvl, temphp, currhp, tempAD, tempD, ID.MONSTER);
-                            Monster.displayInfo(monster);
+                            monster.displayInfo();
                             //implement type if want
                             /*NEUTRAL,
                             UNDEAD,
@@ -103,14 +101,13 @@ public class Menu {
 
                 case 3:
                     clearScreen();
-                    //Cannot reference player and monster through switch case.
-                    //We need a place to access our GameObjects for battle system to work
                     Battle battle = new Battle();
                     battle.startBattle(player, monster);
                     clearScreen();
                     break;
                 case 4:
                     clearScreen();
+                    player.displayInfo();
                     //Creates an error. Most likely need to externally implement driver outside of main class
                     //Player.displayInfo(player);
                     break;

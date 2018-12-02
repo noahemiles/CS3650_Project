@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CS3650_Project;
 
 import java.util.Scanner;
-import java.util.*;
-import java.lang.*;
 import java.io.IOException;
 
 public class Battle {
@@ -81,8 +74,8 @@ public class Battle {
         System.out.println("Look out! A " + monster.getName() + "is coming your way!");
         waitForInput();
         while (1 != 0) {
-            Player.displayInfo(player);
-            Monster.displayInfo(monster);
+            player.displayInfo();
+            monster.displayInfo();
             makeChoice(player, monster);
             monsterChoice(monster, player);
             if (player.isAlive(player) == false) {
