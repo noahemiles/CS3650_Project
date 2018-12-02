@@ -6,16 +6,14 @@ public class Player extends GameObject {
     private int stamina;
     private int toLevelUp;
     //This constructor is called when using only a name to crate a Player
-    public Player(String name) {
+    public Player(String name){
         super(name);
         this.currentEXP = 0;
         this.stamina = 100;
         toLevelUp = 10;
         setIdPlayer();
-=======
->>>>>>> 760bd672cf1184c3b0ffa72abe025a2dffa2f82c
     }
-
+    
     public Player(int exp, int stamina, String name, int level, int maxHealthPoints, int currentHealthPoints, int attackDamageStat, int defenseStat, ID id) {
         super(name, level, maxHealthPoints, currentHealthPoints, attackDamageStat, defenseStat, id);
         this.currentEXP = exp;
@@ -51,21 +49,8 @@ public class Player extends GameObject {
     	currentEXP += gainedEXP;
     	System.out.println("Gained " + gainedEXP + " EXP ");
     	System.out.println("Total EXP Now " + currentEXP + " EXP ");
+    }    
 
-    	//Keep looping through progressive level as long as have enough exp
-    	while(gainedEXP >= toLevelUp)
-    	{
-    		gainedEXP -= toLevelUp;
-    		levelUp();
-    	}
-    	
-    	//Leftover exp counts towards next level
-    	toLevelUp -= gainedEXP;
-    	
-    }
-
-    
-    
     public void staminaUp() {
 
     }
