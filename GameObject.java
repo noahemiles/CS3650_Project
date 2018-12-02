@@ -11,7 +11,7 @@ public abstract class GameObject {
     private int defenseStat;
 
     protected ID id;
-    
+
     public GameObject(String name) {
         this.name = name;
         this.level = 1;
@@ -20,7 +20,7 @@ public abstract class GameObject {
         this.attackDamageStat = 10;
         this.defenseStat = 5;
     }
-    
+
     public GameObject(String name, int level, int maxHealthPoints, int currentHealthPoints, int attackDamageStat, int defenseStat, ID id) {
         this.name = name;
         this.level = level;
@@ -29,6 +29,14 @@ public abstract class GameObject {
         this.attackDamageStat = attackDamageStat;
         this.defenseStat = defenseStat;
         this.id = id;
+    }
+
+    public void displayInfo() {
+        System.out.println(this.getName());
+        System.out.println("Level: " + this.getLevel());
+        System.out.println("Health: " + this.getCurrentHealthPoints() + "/" + this.getMaxHealthPoints());
+        System.out.println("Attack: " + this.getAttackDamageStat());
+        System.out.println("Defense: " + this.getDefenseStat());
     }
 
     public String getName() {
@@ -82,17 +90,10 @@ public abstract class GameObject {
     public void setDefenseStat(int defenseStat) {
         this.defenseStat = defenseStat;
     }
-    
+
     //Not sure how enum objects work yet.
     //Come back to this later
-    public void setId(ID id){
+    public void setId(ID id) {
         this.id = id;
     }
-    public void setIdPlayer() {
-        this.id = ID.PLAYER;
-    }
-    public void setIdMonster() {
-        this.id = ID.MONSTER;
-    }
-
 }

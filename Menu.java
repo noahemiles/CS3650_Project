@@ -28,7 +28,7 @@ public class Menu {
                     System.out.print("Please enter a name: ");
                     name = kb.next();
                     player = new Player(name);
-                    Player.displayInfo(player);
+                    player.displayInfo();
                     System.out.println("\n");
                     break;
                 case 2:
@@ -52,15 +52,15 @@ public class Menu {
                     switch (choice) {
                         case 1:
                             Monster AngryPigeon = new Monster(Type.NEUTRAL, "Angry Pigeon", 1, 10, 10, 1, 0, ID.MONSTER);
-                            Monster.displayInfo(AngryPigeon);
+                            AngryPigeon.displayInfo();
                             break;
                         case 2:
                             Monster RavagingGhoul = new Monster(Type.UNDEAD, "Ravaging Ghoul", 2, 10, 10, 1, 0, ID.MONSTER);
-                            Monster.displayInfo(RavagingGhoul);
+                            RavagingGhoul.displayInfo();
                             break;
                         case 3:
                             Monster UnkillableBehemoth = new Monster(Type.FIRE, "Unkillable Behemoth", 99, 999, 999, 100, 100, ID.MONSTER);
-                            Monster.displayInfo(UnkillableBehemoth);
+                            UnkillableBehemoth.displayInfo();
                             break;
                         default:
                             break;
@@ -75,7 +75,7 @@ public class Menu {
                 case 4:
                     clearScreen();
                     try {
-                        Player.displayInfo(player);
+                        player.displayInfo();
                     } catch (NullPointerException e) {
                         System.out.println("You must create a player first!");
                     }
