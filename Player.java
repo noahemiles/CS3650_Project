@@ -5,19 +5,22 @@ public class Player extends GameObject {
     private int currentEXP;
     private int stamina;
     private int toLevelUp;
+    private Weapon equippedWeapon;
 
     //This constructor is called when using only a name to crate a Player
     public Player(String name) {
         super(name);
         this.currentEXP = 0;
         this.stamina = 100;
-        toLevelUp = 10;
+        this.toLevelUp = 10;
+        this.equippedWeapon = new Weapon();
     }
 
-    public Player(int exp, int stamina, String name, int level, int maxHealthPoints, int currentHealthPoints, int attackDamageStat, int defenseStat, ID id) {
+    public Player(String name, int exp, int stamina, int level, int maxHealthPoints, int currentHealthPoints, int attackDamageStat, int defenseStat, ID id) {
         super(name, level, maxHealthPoints, currentHealthPoints, attackDamageStat, defenseStat, id);
         this.currentEXP = exp;
         this.stamina = stamina;
+        this.equippedWeapon = new Weapon();
     }
 
     public void levelUp() {
@@ -51,6 +54,24 @@ public class Player extends GameObject {
 
     public void staminaUp() {
 
+    }
+
+    public void equipWeapon(Weapon weapon) {
+        if (this.getLevel() >= weapon.getLevelRequirement()) {
+            this.equippedWeapon = weapon;
+            this.setAttackDamageStat(this.getAttackDamageStat() + equippedWeapon.getAttackDamageStat());
+            this.setDefenseStat(this.getAttackDamageStat() + equippedWeapon.getDefenseStat());
+        } else {
+            System.out.println("Not high enough level! ");
+            System.out.println("\tCurrent level: " + this.getLevel());
+            System.out.println("\tRequired level: " + this.equippedWeapon.getLevelRequirement());
+        }
+    }
+
+    public void unequipWeapon() {
+        this.equippedWeapon = new Weapon();
+        this.setAttackDamageStat(this.getAttackDamageStat() - equippedWeapon.getAttackDamageStat());
+        this.setDefenseStat(this.getAttackDamageStat() - equippedWeapon.getDefenseStat());
     }
 
 }
