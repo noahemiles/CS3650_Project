@@ -19,13 +19,6 @@ public class Player extends GameObject {
         this.stamina = stamina;
     }
 
-    public static void displayInfo(Player obj){
-        System.out.println(obj.getName());
-        System.out.println("Level: " + obj.getLevel());
-        System.out.println("Health: " + obj.getCurrentHealthPoints() + "/" + obj.getMaxHealthPoints());
-        System.out.println("Attack: " + obj.getAttackDamageStat());
-        System.out.println("Defense: " + obj.getDefenseStat());
-    }
     
     public void levelUp() {
 

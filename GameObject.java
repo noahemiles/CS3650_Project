@@ -30,6 +30,26 @@ public abstract class GameObject {
         this.defenseStat = defenseStat;
         this.id = id;
     }
+    
+    public static void displayInfo(GameObject obj){
+        System.out.println(obj.getName());
+        System.out.println("Level: " + obj.getLevel());
+        System.out.println("Health: " + obj.getCurrentHealthPoints() + "/" + obj.getMaxHealthPoints());
+        System.out.println("Attack: " + obj.getAttackDamageStat());
+        System.out.println("Defense: " + obj.getDefenseStat());
+        System.out.println();
+    }
+    
+    public boolean isAlive(GameObject obj){
+        boolean status;
+        if (obj.getCurrentHealthPoints() <= 0){
+            status = false;
+        }
+        else {
+            status = true;
+        }
+        return status;
+    }
 
     public String getName() {
         return name;

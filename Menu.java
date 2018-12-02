@@ -69,7 +69,10 @@ public class Menu {
                     break;
                 case 3:
                     clearScreen();
-                    System.out.println("Battle System not yet Implemented");
+                    //Cannot reference player and monster through switch case.
+                    //We need a place to access our GameObjects for battle system to work
+                    Battle.startBattle(player, monster);
+                    clearScreen();
                     break;
                 case 4:
                     clearScreen();
