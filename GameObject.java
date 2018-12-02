@@ -96,7 +96,6 @@ public abstract class GameObject {
     public void setId(ID id) {
         this.id = id;
     }
-<<<<<<< HEAD
     public void setIdPlayer() {
         this.id = ID.PLAYER;
     }
@@ -113,6 +112,4 @@ public abstract class GameObject {
     }
 
 
-=======
->>>>>>> 760bd672cf1184c3b0ffa72abe025a2dffa2f82c
 }

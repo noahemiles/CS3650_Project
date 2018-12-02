@@ -10,7 +10,6 @@ public class Player extends GameObject {
         super(name);
         this.currentEXP = 0;
         this.stamina = 100;
-<<<<<<< HEAD
         toLevelUp = 10;
         setIdPlayer();
 =======
@@ -23,7 +22,6 @@ public class Player extends GameObject {
         this.stamina = stamina;
     }
 
-<<<<<<< HEAD
 
     public void levelUp() 
     {
@@ -46,9 +44,6 @@ public class Player extends GameObject {
     	
     	System.out.println("Congratualtions " + this.getName() + ", You just leveled up to " + this.getLevel() + "!!");
     }
-=======
-    public void levelUp() {
->>>>>>> 760bd672cf1184c3b0ffa72abe025a2dffa2f82c
 
     public void gainxp(int monsterLevel, int damageDealt) {
     	int tempEXP = currentEXP;
