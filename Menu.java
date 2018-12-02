@@ -54,11 +54,11 @@ public class Menu {
                     }
                     switch (choice) {
                         case 1:
-                            monster = new Monster(Type.NEUTRAL, "Angry Pigeon", 1, 10, 10, 1, 0, ID.MONSTER);
+                            monster = new Monster(Type.NEUTRAL, "Angry Pigeon", 1, 30, 30, 1, 0, ID.MONSTER);
                             monster.displayInfo();
                             break;
                         case 2:
-                            monster = new Monster(Type.UNDEAD, "Ravaging Ghoul", 2, 10, 10, 1, 0, ID.MONSTER);
+                            monster = new Monster(Type.UNDEAD, "Ravaging Ghoul", 2, 100, 100, 1, 0, ID.MONSTER);
                             monster.displayInfo();
                             break;
                         case 3:
@@ -108,8 +108,6 @@ public class Menu {
                 case 4:
                     clearScreen();
                     player.displayInfo();
-                    //Creates an error. Most likely need to externally implement driver outside of main class
-                    //Player.displayInfo(player);
                     break;
                 case 5:
                     clearScreen();

@@ -42,6 +42,28 @@ public class Player extends GameObject {
         setDefenseStat(getDefenseStat() + 1);
 
         System.out.println("Congratualtions " + this.getName() + ", You just leveled up to " + this.getLevel() + "!!");
+
+        //new Weapon every 5 levels
+        switch (this.getLevel()) {
+            case 5: {
+                Weapon newWeapon = new Weapon("Wooden Sword", 5, 5, 5);
+                this.equipWeapon(newWeapon);
+                break;
+            }
+            case 10: {
+                Weapon newWeapon = new Weapon("Steel Blade", 30, 5, 10);
+                this.equipWeapon(newWeapon);
+                break;
+            }
+            case 15: {
+                Weapon newWeapon = new Weapon("Excalibur", 150, 5, 15);
+                this.equipWeapon(newWeapon);
+                break;
+            }
+            default:
+                break;
+        }
+
     }
 
     public void gainxp(int monsterLevel, int damageDealt) {
@@ -58,9 +80,13 @@ public class Player extends GameObject {
 
     public void equipWeapon(Weapon weapon) {
         if (this.getLevel() >= weapon.getLevelRequirement()) {
+            this.unequipWeapon();
+            System.out.println("You found and equipped a " + weapon.getWeaponName() + "!");
             this.equippedWeapon = weapon;
             this.setAttackDamageStat(this.getAttackDamageStat() + equippedWeapon.getAttackDamageStat());
             this.setDefenseStat(this.getAttackDamageStat() + equippedWeapon.getDefenseStat());
+            System.out.println("Your attack is now: " + this.getAttackDamageStat() + "!");
+            System.out.println("Your defense is now: " + this.getDefenseStat() + "!");
         } else {
             System.out.println("Not high enough level! ");
             System.out.println("\tCurrent level: " + this.getLevel());
@@ -73,5 +99,4 @@ public class Player extends GameObject {
         this.setAttackDamageStat(this.getAttackDamageStat() - equippedWeapon.getAttackDamageStat());
         this.setDefenseStat(this.getAttackDamageStat() - equippedWeapon.getDefenseStat());
     }
-
 }
