@@ -74,8 +74,7 @@ public class Player extends GameObject {
         System.out.println("Total EXP Now " + currentEXP + " EXP ");
 
         //Keep looping through progressive level as long as have enough exp
-        while(gainedEXP >= toLevelUp)
-        {
+        while (gainedEXP >= toLevelUp) {
             gainedEXP -= toLevelUp;
             levelUp();
         }
@@ -110,4 +109,43 @@ public class Player extends GameObject {
         this.setAttackDamageStat(this.getAttackDamageStat() - equippedWeapon.getAttackDamageStat());
         this.setDefenseStat(this.getAttackDamageStat() - equippedWeapon.getDefenseStat());
     }
+
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Current EXP: " + this.getCurrentEXP());
+        System.out.println("EXP to level up: " + this.getToLevelUp());
+    }
+
+    public int getCurrentEXP() {
+        return currentEXP;
+    }
+
+    public int getStamina() {
+        return stamina;
+    }
+
+    public int getToLevelUp() {
+        return toLevelUp;
+    }
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void setCurrentEXP(int currentEXP) {
+        this.currentEXP = currentEXP;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public void setToLevelUp(int toLevelUp) {
+        this.toLevelUp = toLevelUp;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        this.equippedWeapon = equippedWeapon;
+    }
+
 }
