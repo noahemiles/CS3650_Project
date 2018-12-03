@@ -7,6 +7,8 @@ public class Menu {
     public static void clearScreen() {
         System.out.println(new String(new char[100]).replace("\0", "\r\n"));
     }
+    
+    
 
     public void startMenu() {
         int choice;
@@ -58,11 +60,11 @@ public class Menu {
                     }
                     switch (choice) {
                         case 1:
-                            monster = new Monster(Type.NEUTRAL, "Angry Pigeon", 1, 30, 30, 7, 0, ID.MONSTER);
+                            monster = new Monster(Type.NEUTRAL, "Angry Pigeon", 1, 30, 30, 1, 0, ID.MONSTER);
                             monster.displayInfo();
                             break;
                         case 2:
-                            monster = new Monster(Type.UNDEAD, "Ravaging Ghoul", 2, 100, 100, 20, 0, ID.MONSTER);
+                            monster = new Monster(Type.UNDEAD, "Ravaging Ghoul", 2, 100, 100, 1, 0, ID.MONSTER);
                             monster.displayInfo();
                             break;
                         case 3:
@@ -114,7 +116,10 @@ public class Menu {
                     player.displayInfo();
                     break;
                 case 5:
+                    clearScreen();
                     player.setCurrentHealthPoints(player.getMaxHealthPoints());
+                    System.out.println("You stop by an inn to rest up for the night.");
+                    System.out.println("You wake up feeling reinvigorated!");
                     break;
                 case 6:
                     clearScreen();

@@ -11,14 +11,15 @@ public class Battle {
     public static void clearScreen() {
         System.out.println(new String(new char[100]).replace("\0", "\r\n"));
     }
-
+    
     public int calculateDamage(GameObject obj1, GameObject obj2) {
         int totalDamage;
         int newCurrentHealth;
-        if (obj1.getAttackDamageStat() <= obj2.getDefenseStat()) {
+        if (obj1.getAttackDamageStat() <= obj2.getDefenseStat()){
             totalDamage = 0;
             System.out.println(obj1.getName() + "'s strength is too weak!");
-        } else {
+        }
+        else{
             totalDamage = obj1.getAttackDamageStat() - obj2.getDefenseStat();
         }
         newCurrentHealth = obj2.getCurrentHealthPoints() - totalDamage;
@@ -43,7 +44,7 @@ public class Battle {
         }
     }
 
-    public int makeChoice(Player player, Monster monster) {
+    public void makeChoice(Player player, Monster monster) {
         System.out.println("What will you do?");
         System.out.println("(1) Attack\n");
         System.out.println("(2) Do Nothing\n");
@@ -69,14 +70,10 @@ public class Battle {
                 System.out.println("...");
                 waitForInput();
                 System.out.println("You escaped!");
-                waitForInput();
-                //resets the monster back to full hp
-                monster.setCurrentHealthPoints(monster.getMaxHealthPoints());
                 break;
             default:
                 break;
         }
-        return choice;
     }
 
     public void monsterChoice(Monster monster, Player player) {
@@ -84,36 +81,30 @@ public class Battle {
     }
 
     public void startBattle(Player player, Monster monster) {
-        boolean battle = true;
         System.out.println("You sense a threatening presence drawing closer to you from up ahead.");
         waitForInput();
         System.out.println("Unsure of what the shadowy figure is yet, you prepare your weapon in hand, knowing your life is in imminent danger.");
         waitForInput();
         System.out.println("Look out! An " + monster.getName() + " is coming your way!");
         waitForInput();
-        while (battle) {
+        while (1 != 0) {
             player.displayInfo();
             monster.displayInfo();
-            if (makeChoice(player, monster) != 3) {
-                monsterChoice(monster, player);
+            makeChoice(player, monster);
+            monsterChoice(monster, player);
+            waitForInput();
+            if (player.isAlive(player) == false) {
+                System.out.println("Game Over. You died.");
                 waitForInput();
-                if (player.isAlive(player) == false) {
-                    System.out.println("Game Over. You died.");
-                    waitForInput();
-                    battle = false;
-                } else if (monster.isAlive(monster) == false) {
-                    System.out.println("With one final swing of your weapon, you struck the killing blow to end the" + monster.getName() + "'s life.");
-                    waitForInput();
-                    System.out.println("You feel a surge of energy passing through your entire body.");
-                    waitForInput();
-                    player.gainxp(monster.getLevel(), monster.getMaxHealthPoints());
-                    waitForInput();
-                    battle = false;
-                    //resets the monster back to full hp
-                    monster.setCurrentHealthPoints(monster.getMaxHealthPoints());
-                }
-            } else {
-                battle = false;
+                return;
+            } else if (monster.isAlive(monster) == false) {
+                System.out.println("With one final swing of your weapon, you struck the killing blow to end the" + monster.getName() + "'s life.");
+                waitForInput();
+                System.out.println("You feel a surge of energy passing through your entire body.");
+                waitForInput();
+                player.gainxp(monster.getLevel(), monster.getMaxHealthPoints());
+                waitForInput();
+                return;
             }
             clearScreen();
         }

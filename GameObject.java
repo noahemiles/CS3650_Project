@@ -18,7 +18,7 @@ public abstract class GameObject {
         this.maxHealthPoints = 100;
         this.currentHealthPoints = 100;
         this.attackDamageStat = 10;
-        this.defenseStat = 1;
+        this.defenseStat = 5;
     }
 
     public GameObject(String name, int level, int maxHealthPoints, int currentHealthPoints, int attackDamageStat, int defenseStat, ID id) {
