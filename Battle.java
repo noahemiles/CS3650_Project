@@ -1,15 +1,16 @@
 package CS3650_Project;
 
 import java.util.Scanner;
+import java.io.IOException;
 
 public class Battle {
 
-    int choice;
-    Scanner kb = new Scanner(System.in);
-    ScreenManagement SM = new ScreenManagement();
+    private int choice;
+    private final Scanner kb = new Scanner(System.in);
+    private final ScreenManagement SM = new ScreenManagement();
 
 
-    public int calculateDamage(GameObject obj1, GameObject obj2) {
+    private int calculateDamage(GameObject obj1, GameObject obj2) {
         int totalDamage;
         int newCurrentHealth;
         if (obj1.getAttackDamageStat() <= obj2.getDefenseStat()) {
@@ -23,7 +24,7 @@ public class Battle {
         return newCurrentHealth;
     }
 
-    public int makeChoice(Player player, Monster monster) {
+    private int makeChoice(Player player, Monster monster) {
         System.out.println("What will you do?");
         System.out.println("(1) Attack\n");
         System.out.println("(2) Do Nothing\n");
@@ -59,11 +60,11 @@ public class Battle {
         return choice;
     }
 
-    public void monsterChoice(Monster monster, Player player) {
+    private void monsterChoice(Monster monster, Player player) {
         player.setCurrentHealthPoints(calculateDamage(monster, player));
     }
 
-    public void startBattle(Player player, Monster monster) {
+    protected void startBattle(Player player, Monster monster) {
         boolean battle = true;
         System.out.println("You sense a threatening presence drawing closer to you from up ahead.");
         SM.waitForInput();
