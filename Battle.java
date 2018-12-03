@@ -112,6 +112,9 @@ public class Battle {
                 battle = false;
             }
             clearScreen();
+            
+            //resets the monster back to full hp
+            monster.setCurrentHealthPoints(monster.getMaxHealthPoints());
         }
     }
 }
