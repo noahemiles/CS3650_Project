@@ -1,7 +1,6 @@
 package CS3650_Project;
 
 import java.util.Scanner;
-import java.io.IOException;
 
 public class Battle {
 

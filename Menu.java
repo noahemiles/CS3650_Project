@@ -6,7 +6,7 @@ public class Menu {
 
     ScreenManagement SM = new ScreenManagement();
     
-    public void displayMenu(){
+    private void displayMenu(){
         System.out.println("(1) Create Player\n");
         System.out.println("(2) Create Monster\n");
         System.out.println("(3) Battle\n");
@@ -16,7 +16,7 @@ public class Menu {
         System.out.print("Enter an option (1-6): ");
     }
     
-    public void displayMonsters(){
+    private void displayMonsters(){
         System.out.println("Choose a default Monster");
         System.out.println("(1) Angry Pigeon\n");
         System.out.println("(2) Ravaging Ghoul\n");
@@ -25,7 +25,7 @@ public class Menu {
         System.out.print("Enter an option (1-4): ");
     }
     
-    public void recover(){
+    private void recover(){
         System.out.println("You stop by an inn to rest up for the night.\n");
         System.out.println("You wake up the next day feeling reinvigorated!\n");
         
