@@ -33,7 +33,7 @@ public class Player extends GameObject {
         //increase player's stats for leveling up
         //+5 for HP
         setCurrentHealthPoints(getCurrentHealthPoints() + 5);
-        setMaxHealthPoints(getCurrentHealthPoints() + 5);
+        setMaxHealthPoints(getMaxHealthPoints() + 5);
 
         //+2 for Attack
         setAttackDamageStat(getAttackDamageStat() + 2);
@@ -81,6 +81,10 @@ public class Player extends GameObject {
 
         //Leftover exp counts towards next level
         toLevelUp -= gainedEXP;
+
+    }
+
+    public void staminaUp() {
 
     }
 
