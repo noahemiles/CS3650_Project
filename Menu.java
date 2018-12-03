@@ -14,14 +14,16 @@ public class Menu {
         Monster monster = null;
         Player player = null;
         Scanner kb = new Scanner(System.in);
+        clearScreen();
         System.out.println("Welcome to our demo.");
         while (1 != 0) {
             System.out.println("(1) Create Player\n");
             System.out.println("(2) Create Monster\n");
             System.out.println("(3) Battle\n");
             System.out.println("(4) Display Player Info\n");
-            System.out.println("(5) Exit\n");
-            System.out.print("Enter an option (1-5):");
+            System.out.println("(5) Recover\n");
+            System.out.println("(6) Exit\n");
+            System.out.print("Enter an option (1-6): ");
             choice = kb.nextInt();
             switch (choice) {
                 case 1:
@@ -35,22 +37,24 @@ public class Menu {
                 case 2:
                     clearScreen();
                     System.out.println("Choose a default Monster");
-                    System.out.println("(1) Angry Pigeon");
-                    System.out.println("(2) Ravaging Ghoul");
-                    System.out.println("(3) Unkillable Behemoth");
-                    System.out.println("(4) Create Your Own Monster");
-                    System.out.println("Enter an option (1-4): ");
+                    System.out.println("(1) Angry Pigeon\n");
+                    System.out.println("(2) Ravaging Ghoul\n");
+                    System.out.println("(3) Unkillable Behemoth\n");
+                    System.out.println("(4) Create Your Own Monster\n");
+                    System.out.print("Enter an option (1-4): ");
                     choice = kb.nextInt();
+                    clearScreen();
                     while (choice < 1 || choice > 4) {
                         clearScreen();
                         System.out.println("Invalid choice.");
-                        System.out.println("Choose a default Monster");
-                        System.out.println("(1) Angry Pigeon");
-                        System.out.println("(2) Ravaging Ghoul");
-                        System.out.println("(3) Unkillable Behemoth");
-                        System.out.println("(4) Create Your Own Monster");
-                        System.out.println("Enter an option (1-4): ");
+                        System.out.println("Choose a default Monster\n");
+                        System.out.println("(1) Angry Pigeon\n");
+                        System.out.println("(2) Ravaging Ghoul\n");
+                        System.out.println("(3) Unkillable Behemoth\n");
+                        System.out.println("(4) Create Your Own Monster\n");
+                        System.out.print("Enter an option (1-4): ");
                         choice = kb.nextInt();
+                        clearScreen();
                     }
                     switch (choice) {
                         case 1:
@@ -66,23 +70,23 @@ public class Menu {
                             monster.displayInfo();
                             break;
                         case 4:
-                            System.out.println("Enter Name for Monster: ");
+                            System.out.print("Enter Name for Monster: ");
                             String tempName = kb.next();
 
-                            System.out.println("Enter Level for Monster: ");
+                            System.out.print("Enter Level for Monster: ");
                             int templvl = kb.nextInt();
 
-                            System.out.println("Enter Max HP for Monster: ");
+                            System.out.print("Enter Max HP for Monster: ");
                             int temphp = kb.nextInt();
 
-                            System.out.println("Enter Current HP for Monster: ");
+                            System.out.print("Enter Current HP for Monster: ");
                             int currhp = kb.nextInt();
-                            System.out.println("Enter Attack Damage for Monster: ");
+                            System.out.print("Enter Attack Damage for Monster: ");
                             int tempAD = kb.nextInt();
 
-                            System.out.println("Enter Defensive Stats for Monster: ");
+                            System.out.print("Enter Defensive Stats for Monster: ");
                             int tempD = kb.nextInt();
-
+                            clearScreen();
                             monster = new Monster(Type.FIRE, tempName, templvl, temphp, currhp, tempAD, tempD, ID.MONSTER);
                             monster.displayInfo();
                             //implement type if want
@@ -110,6 +114,9 @@ public class Menu {
                     player.displayInfo();
                     break;
                 case 5:
+                    player.setCurrentHealthPoints(player.getMaxHealthPoints());
+                    break;
+                case 6:
                     clearScreen();
                     System.out.println("Exiting...");
                     System.exit(0);
