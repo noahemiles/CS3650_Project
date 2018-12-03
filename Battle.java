@@ -8,10 +8,20 @@ public class Battle {
     int choice;
     Scanner kb = new Scanner(System.in);
 
+    public static void clearScreen() {
+        System.out.println(new String(new char[100]).replace("\0", "\r\n"));
+    }
+    
     public int calculateDamage(GameObject obj1, GameObject obj2) {
         int totalDamage;
         int newCurrentHealth;
-        totalDamage = obj1.getAttackDamageStat() - obj2.getDefenseStat();
+        if (obj1.getAttackDamageStat() <= obj2.getDefenseStat()){
+            totalDamage = 0;
+            System.out.println(obj1.getName() + "'s strength is too weak!");
+        }
+        else{
+            totalDamage = obj1.getAttackDamageStat() - obj2.getDefenseStat();
+        }
         newCurrentHealth = obj2.getCurrentHealthPoints() - totalDamage;
         System.out.println(obj1.getName() + " struck " + obj2.getName() + " for " + totalDamage + " Damage!");
         return newCurrentHealth;
@@ -49,13 +59,17 @@ public class Battle {
         switch (choice) {
             case 1:
                 monster.setCurrentHealthPoints(calculateDamage(player, monster));
-                System.out.println("");
                 break;
             case 2:
                 System.out.println("You did nothing.");
+                waitForInput();
                 break;
             case 3:
-                //run away
+                System.out.println("Frightened for your life, you decided turn around and run as fast as you can!");
+                waitForInput();
+                System.out.println("...");
+                waitForInput();
+                System.out.println("You escaped!");
                 break;
             default:
                 break;
@@ -71,13 +85,14 @@ public class Battle {
         waitForInput();
         System.out.println("Unsure of what the shadowy figure is yet, you prepare your weapon in hand, knowing your life is in imminent danger.");
         waitForInput();
-        System.out.println("Look out! A " + monster.getName() + "is coming your way!");
+        System.out.println("Look out! An " + monster.getName() + " is coming your way!");
         waitForInput();
         while (1 != 0) {
             player.displayInfo();
             monster.displayInfo();
             makeChoice(player, monster);
             monsterChoice(monster, player);
+            waitForInput();
             if (player.isAlive(player) == false) {
                 System.out.println("Game Over. You died.");
                 waitForInput();
@@ -87,9 +102,11 @@ public class Battle {
                 waitForInput();
                 System.out.println("You feel a surge of energy passing through your entire body.");
                 waitForInput();
-                // do exp and lvl calc
+                player.gainxp(monster.getLevel(), monster.getMaxHealthPoints());
+                waitForInput();
                 return;
             }
+            clearScreen();
         }
     }
 }

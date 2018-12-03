@@ -7,7 +7,7 @@ public class Player extends GameObject {
     private int toLevelUp;
     private Weapon equippedWeapon;
 
-    //This constructor is called when using only a name to crate a Player
+    //This constructor is called when using only a name to create a Player
     public Player(String name) {
         super(name);
         this.currentEXP = 0;
@@ -74,13 +74,15 @@ public class Player extends GameObject {
         System.out.println("Total EXP Now " + currentEXP + " EXP ");
 
         //Keep looping through progressive level as long as have enough exp
-        while (gainedEXP >= toLevelUp) {
+        while(gainedEXP >= toLevelUp)
+        {
             gainedEXP -= toLevelUp;
             levelUp();
         }
 
         //Leftover exp counts towards next level
         toLevelUp -= gainedEXP;
+
     }
 
     public void staminaUp() {
