@@ -1,4 +1,4 @@
-package cs3650_project;
+package CS3650_Project;
 
 import java.io.IOException;
 
