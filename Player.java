@@ -84,10 +84,6 @@ public class Player extends GameObject {
 
     }
 
-    public void staminaUp() {
-
-    }
-
     public void equipWeapon(Weapon weapon) {
         if (this.getLevel() >= weapon.getLevelRequirement()) {
             this.unequipWeapon();
