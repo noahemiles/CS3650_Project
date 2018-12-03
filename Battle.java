@@ -70,6 +70,8 @@ public class Battle {
                 waitForInput();
                 System.out.println("You escaped!");
                 waitForInput();
+                //resets the monster back to full hp
+                monster.setCurrentHealthPoints(monster.getMaxHealthPoints());
                 break;
             default:
                 break;
@@ -107,14 +109,13 @@ public class Battle {
                     player.gainxp(monster.getLevel(), monster.getMaxHealthPoints());
                     waitForInput();
                     battle = false;
+                    //resets the monster back to full hp
+                    monster.setCurrentHealthPoints(monster.getMaxHealthPoints());
                 }
             } else {
                 battle = false;
             }
             clearScreen();
-            
-            //resets the monster back to full hp
-            monster.setCurrentHealthPoints(monster.getMaxHealthPoints());
         }
     }
 }
