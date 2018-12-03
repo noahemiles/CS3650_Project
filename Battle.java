@@ -7,10 +7,8 @@ public class Battle {
 
     int choice;
     Scanner kb = new Scanner(System.in);
+    ScreenManagement SM = new ScreenManagement();
 
-    public static void clearScreen() {
-        System.out.println(new String(new char[100]).replace("\0", "\r\n"));
-    }
 
     public int calculateDamage(GameObject obj1, GameObject obj2) {
         int totalDamage;
@@ -24,23 +22,6 @@ public class Battle {
         newCurrentHealth = obj2.getCurrentHealthPoints() - totalDamage;
         System.out.println(obj1.getName() + " struck " + obj2.getName() + " for " + totalDamage + " Damage!");
         return newCurrentHealth;
-    }
-
-    public void pause() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    public void waitForInput() {
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
     public int makeChoice(Player player, Monster monster) {
@@ -61,15 +42,15 @@ public class Battle {
                 break;
             case 2:
                 System.out.println("You did nothing.");
-                waitForInput();
+                SM.waitForInput();
                 break;
             case 3:
                 System.out.println("Frightened for your life, you decided turn around and run as fast as you can!");
-                waitForInput();
+                SM.waitForInput();
                 System.out.println("...");
-                waitForInput();
+                SM.waitForInput();
                 System.out.println("You escaped!");
-                waitForInput();
+                SM.waitForInput();
                 //resets the monster back to full hp
                 monster.setCurrentHealthPoints(monster.getMaxHealthPoints());
                 break;
@@ -86,28 +67,28 @@ public class Battle {
     public void startBattle(Player player, Monster monster) {
         boolean battle = true;
         System.out.println("You sense a threatening presence drawing closer to you from up ahead.");
-        waitForInput();
+        SM.waitForInput();
         System.out.println("Unsure of what the shadowy figure is yet, you prepare your weapon in hand, knowing your life is in imminent danger.");
-        waitForInput();
+        SM.waitForInput();
         System.out.println("Look out! An " + monster.getName() + " is coming your way!");
-        waitForInput();
+        SM.waitForInput();
         while (battle) {
             player.displayInfo();
             monster.displayInfo();
             if (makeChoice(player, monster) != 3) {
                 monsterChoice(monster, player);
-                waitForInput();
+                SM.waitForInput();
                 if (player.isAlive(player) == false) {
                     System.out.println("Game Over. You died.");
-                    waitForInput();
+                    SM.waitForInput();
                     battle = false;
                 } else if (monster.isAlive(monster) == false) {
                     System.out.println("With one final swing of your weapon, you struck the killing blow to end the" + monster.getName() + "'s life.");
-                    waitForInput();
+                    SM.waitForInput();
                     System.out.println("You feel a surge of energy passing through your entire body.");
-                    waitForInput();
+                    SM.waitForInput();
                     player.gainxp(monster.getLevel(), monster.getMaxHealthPoints());
-                    waitForInput();
+                    SM.waitForInput();
                     battle = false;
                     //resets the monster back to full hp
                     monster.setCurrentHealthPoints(monster.getMaxHealthPoints());
@@ -115,7 +96,7 @@ public class Battle {
             } else {
                 battle = false;
             }
-            clearScreen();
+            SM.clearScreen();
         }
     }
 }

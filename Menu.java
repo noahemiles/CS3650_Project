@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void clearScreen() {
-        System.out.println(new String(new char[100]).replace("\0", "\r\n"));
-    }
+    ScreenManagement SM = new ScreenManagement();
 
     public void startMenu() {
         int choice;
@@ -14,7 +12,7 @@ public class Menu {
         Monster monster = null;
         Player player = null;
         Scanner kb = new Scanner(System.in);
-        clearScreen();
+        SM.clearScreen();
         System.out.println("Welcome to our demo.");
         while (1 != 0) {
             System.out.println("(1) Create Player\n");
@@ -27,7 +25,7 @@ public class Menu {
             choice = kb.nextInt();
             switch (choice) {
                 case 1:
-                    clearScreen();
+                   SM.clearScreen();
                     System.out.print("Please enter a name: ");
                     name = kb.next();
                     player = new Player(name);
@@ -35,7 +33,7 @@ public class Menu {
                     System.out.println("\n");
                     break;
                 case 2:
-                    clearScreen();
+                    SM.clearScreen();
                     System.out.println("Choose a default Monster");
                     System.out.println("(1) Angry Pigeon\n");
                     System.out.println("(2) Ravaging Ghoul\n");
@@ -43,9 +41,9 @@ public class Menu {
                     System.out.println("(4) Create Your Own Monster\n");
                     System.out.print("Enter an option (1-4): ");
                     choice = kb.nextInt();
-                    clearScreen();
+                    SM.clearScreen();
                     while (choice < 1 || choice > 4) {
-                        clearScreen();
+                        SM.clearScreen();
                         System.out.println("Invalid choice.");
                         System.out.println("Choose a default Monster\n");
                         System.out.println("(1) Angry Pigeon\n");
@@ -54,7 +52,7 @@ public class Menu {
                         System.out.println("(4) Create Your Own Monster\n");
                         System.out.print("Enter an option (1-4): ");
                         choice = kb.nextInt();
-                        clearScreen();
+                        SM.clearScreen();
                     }
                     switch (choice) {
                         case 1:
@@ -72,7 +70,7 @@ public class Menu {
                         case 4:
                             System.out.print("Enter Name for Monster: ");
                             String tempName = kb.next();
-                            kb.next();
+
                             System.out.print("Enter Level for Monster: ");
                             int templvl = kb.nextInt();
 
@@ -86,7 +84,7 @@ public class Menu {
 
                             System.out.print("Enter Defensive Stats for Monster: ");
                             int tempD = kb.nextInt();
-                            clearScreen();
+                            SM.clearScreen();
                             monster = new Monster(Type.FIRE, tempName, templvl, temphp, currhp, tempAD, tempD, ID.MONSTER);
                             monster.displayInfo();
                             //implement type if want
@@ -104,25 +102,27 @@ public class Menu {
                     break;
 
                 case 3:
-                    clearScreen();
+                    SM.clearScreen();
                     Battle battle = new Battle();
                     battle.startBattle(player, monster);
-                    clearScreen();
+                    SM.clearScreen();
                     break;
                 case 4:
-                    clearScreen();
+                    SM.clearScreen();
                     player.displayInfo();
                     break;
                 case 5:
+                    System.out.println("You stop by an inn to rest up for the night.\n");
+                    System.out.println("You wake up the next day feeling reinvigorated!\n");
                     player.setCurrentHealthPoints(player.getMaxHealthPoints());
                     break;
                 case 6:
-                    clearScreen();
+                    SM.clearScreen();
                     System.out.println("Exiting...");
                     System.exit(0);
                     break;
                 default:
-                    clearScreen();
+                    SM.clearScreen();
                     System.out.println("Invalid option.");
                     break;
             }
