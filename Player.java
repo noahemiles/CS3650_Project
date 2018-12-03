@@ -72,6 +72,15 @@ public class Player extends GameObject {
         currentEXP += gainedEXP;
         System.out.println("Gained " + gainedEXP + " EXP ");
         System.out.println("Total EXP Now " + currentEXP + " EXP ");
+
+        //Keep looping through progressive level as long as have enough exp
+        while (gainedEXP >= toLevelUp) {
+            gainedEXP -= toLevelUp;
+            levelUp();
+        }
+
+        //Leftover exp counts towards next level
+        toLevelUp -= gainedEXP;
     }
 
     public void staminaUp() {

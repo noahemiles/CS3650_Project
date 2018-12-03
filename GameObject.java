@@ -102,8 +102,6 @@ public abstract class GameObject {
         this.defenseStat = defenseStat;
     }
 
-    //Not sure how enum objects work yet.
-    //Come back to this later
     public void setId(ID id) {
         this.id = id;
     }
