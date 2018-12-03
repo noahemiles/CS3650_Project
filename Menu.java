@@ -72,7 +72,7 @@ public class Menu {
                         case 4:
                             System.out.print("Enter Name for Monster: ");
                             String tempName = kb.next();
-
+                            kb.next();
                             System.out.print("Enter Level for Monster: ");
                             int templvl = kb.nextInt();
 
