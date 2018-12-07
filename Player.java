@@ -94,7 +94,7 @@ public class Player extends GameObject {
             System.out.println("You found and equipped a " + weapon.getWeaponName() + "!");
             this.equippedWeapon = weapon;
             this.setAttackDamageStat(this.getAttackDamageStat() + equippedWeapon.getAttackDamageStat());
-            this.setDefenseStat(this.getAttackDamageStat() + equippedWeapon.getDefenseStat());
+            this.setDefenseStat(this.getDefenseStat() + equippedWeapon.getDefenseStat());
             System.out.println("Your attack is now: " + this.getAttackDamageStat() + "!");
             System.out.println("Your defense is now: " + this.getDefenseStat() + "!");
         } else {
@@ -114,6 +114,7 @@ public class Player extends GameObject {
         super.displayInfo();
         System.out.println("Current EXP: " + this.getCurrentEXP());
         System.out.println("EXP to level up: " + this.getToLevelUp());
+        System.out.println("----------------");
     }
 
     public int getCurrentEXP() {

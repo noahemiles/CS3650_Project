@@ -6,7 +6,7 @@ public class Menu {
 
     ScreenManagement SM = new ScreenManagement();
     
-    private void displayMenu(){
+    public void displayMenu(){
         System.out.println("(1) Create Player\n");
         System.out.println("(2) Create Monster\n");
         System.out.println("(3) Battle\n");
@@ -16,7 +16,7 @@ public class Menu {
         System.out.print("Enter an option (1-6): ");
     }
     
-    private void displayMonsters(){
+    public void displayMonsters(){
         System.out.println("Choose a default Monster");
         System.out.println("(1) Angry Pigeon\n");
         System.out.println("(2) Ravaging Ghoul\n");
@@ -25,7 +25,7 @@ public class Menu {
         System.out.print("Enter an option (1-4): ");
     }
     
-    private void recover(){
+    public void recover(){
         System.out.println("You stop by an inn to rest up for the night.\n");
         System.out.println("You wake up the next day feeling reinvigorated!\n");
         
@@ -65,11 +65,11 @@ public class Menu {
                     }
                     switch (choice) {
                         case 1:
-                            monster = new Monster(Type.NEUTRAL, "Angry Pigeon", 1, 30, 30, 7, 0, ID.MONSTER);
+                            monster = new Monster(Type.NEUTRAL, "Angry Pigeon", 3, 30, 30, 7, 0, ID.MONSTER);
                             monster.displayInfo();
                             break;
                         case 2:
-                            monster = new Monster(Type.UNDEAD, "Ravaging Ghoul", 2, 100, 100, 20, 0, ID.MONSTER);
+                            monster = new Monster(Type.UNDEAD, "Ravaging Ghoul", 10, 50, 50, 20, 0, ID.MONSTER);
                             monster.displayInfo();
                             break;
                         case 3:
