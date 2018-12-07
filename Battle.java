@@ -1,13 +1,15 @@
 package CS3650_Project;
 
 import java.util.Scanner;
+import java.io.IOException;
+import java.util.Random;
 
 public class Battle {
 
     private int choice;
+    private final Random rand = new Random();
     private final Scanner kb = new Scanner(System.in);
     private final ScreenManagement SM = new ScreenManagement();
-
 
     private int calculateDamage(GameObject obj1, GameObject obj2) {
         int totalDamage;
@@ -22,11 +24,32 @@ public class Battle {
         System.out.println(obj1.getName() + " struck " + obj2.getName() + " for " + totalDamage + " Damage!");
         return newCurrentHealth;
     }
+    
+    private int calculateDamage(GameObject obj1, GameObject obj2, int rng) {
+        int totalDamage;
+        int newCurrentHealth;
+        if (obj1.getAttackDamageStat() <= obj2.getDefenseStat()) {
+            totalDamage = 0;
+            System.out.println(obj1.getName() + "'s strength is too weak!");
+        } else {
+            totalDamage = obj1.getAttackDamageStat() - obj2.getDefenseStat();
+            totalDamage = totalDamage + (totalDamage / 4);
+        }
+        newCurrentHealth = obj2.getCurrentHealthPoints() - totalDamage;
+        System.out.println(obj1.getName() + " struck " + obj2.getName() + " for " + totalDamage + " Damage!");
+        return newCurrentHealth;
+    }
+    
+    private void rngSkill(GameObject obj1, GameObject obj2){
+        System.out.println("Action was a success!");
+        obj2.setCurrentHealthPoints(calculateDamage(obj1, obj2, 1));
+        
+    }
 
     private int makeChoice(Player player, Monster monster) {
         System.out.println("What will you do?");
         System.out.println("(1) Attack\n");
-        System.out.println("(2) Do Nothing\n");
+        System.out.println("(2) RNG Skill\n");
         System.out.println("(3) Run Away\n");
         System.out.print("Enter an option (1-3):");
         choice = kb.nextInt();
@@ -40,7 +63,12 @@ public class Battle {
                 monster.setCurrentHealthPoints(calculateDamage(player, monster));
                 break;
             case 2:
-                System.out.println("You did nothing.");
+                System.out.println("You attempted to channel a powerful hidden technique at the cost of missing...");
+                if (rand.nextBoolean()) {
+                    rngSkill(player, monster);
+                } else {
+                    System.out.println("Action failed!");
+                }
                 SM.waitForInput();
                 break;
             case 3:
@@ -60,7 +88,18 @@ public class Battle {
     }
 
     private void monsterChoice(Monster monster, Player player) {
-        player.setCurrentHealthPoints(calculateDamage(monster, player));
+        if (rand.nextBoolean()){
+            player.setCurrentHealthPoints(calculateDamage(monster, player));
+        } else {
+            System.out.println(monster.getName() + " attempted to channel a powerfull hidden technique at the cost of missing...");
+            if (rand.nextBoolean()){
+                rngSkill(monster, player);
+            } else {
+                System.out.println("Action failed!");
+            }
+        }
+        
+        
     }
 
     protected void startBattle(Player player, Monster monster) {
@@ -75,7 +114,9 @@ public class Battle {
             player.displayInfo();
             monster.displayInfo();
             if (makeChoice(player, monster) != 3) {
-                monsterChoice(monster, player);
+                if (monster.isAlive(monster) == true){
+                    monsterChoice(monster, player);
+                }
                 SM.waitForInput();
                 if (player.isAlive(player) == false) {
                     System.out.println("Game Over. You died.");
